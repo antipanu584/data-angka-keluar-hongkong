@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Sydney Data Engineering Meetup
+    </title>
+    <style>:root{--border-radius:5px;--box-shadow:2px 2px 10px;--color:#118bee;--color-accent:#118bee15;--color-bg:#fff;--color-bg-secondary:#e9e9e9;--color-secondary:#0645AD;--color-secondary-accent:#920de90b;--color-shadow:#f4f4f4;--color-text:#000;--color-text-secondary:#999;--font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;--hover-brightness:1.2;--justify-important:center;--justify-normal:left;--line-height:1.5;--width-card:285px;--width-card-medium:460px;--width-card-wide:800px;--width-content:1080px}article aside{background:var(--color-secondary-accent);border-left:4px solid var(--color-secondary);padding:.01rem .8rem}body{background:var(--color-bg);color:var(--color-text);font-family:var(--font-family);line-height:var(--line-height);margin:0;overflow-x:hidden;padding:1rem 0}footer,header,main{margin:0 auto;max-width:var(--width-content);padding:0rem 1rem}hr{background-color:var(--color-bg-secondary);border:none;height:1px;margin:4rem 0}section{display:flex;flex-wrap:wrap;justify-content:var(--justify-important)}section aside{border:1px solid var(--color-bg-secondary);border-radius:var(--border-radius);box-shadow:var(--box-shadow) var(--color-shadow);margin:1rem;padding:1.25rem;width:var(--width-card)}section aside:hover{box-shadow:var(--box-shadow) var(--color-bg-secondary)}section aside img{max-width:100%}[hidden]{display:none}article header,div header,main header{padding-top:0}header{text-align:var(--justify-important)}header a b,header a em,header a i,header a strong{margin-left:.5rem;margin-right:.5rem}header nav img{margin:1rem 0}section header{padding-top:0;width:100%}nav{align-items:center;display:flex;font-weight:700;justify-content:space-between;margin-bottom:7rem}nav ul{list-style:none;padding:0}nav ul li{display:inline-block;margin:0 .5rem;position:relative;text-align:left}nav ul li:hover ul{display:block}nav ul li ul{background:var(--color-bg);border:1px solid var(--color-bg-secondary);border-radius:var(--border-radius);box-shadow:var(--box-shadow) var(--color-shadow);display:none;height:auto;left:-2px;padding:.5rem 1rem;position:absolute;top:1.7rem;white-space:nowrap;width:auto}nav ul li ul li,nav ul li ul li a{display:block}code,samp{background-color:var(--color-accent);border-radius:var(--border-radius);color:var(--color-text);display:inline-block;margin:0 .1rem;padding:0 .5rem}details{margin:1.3rem 0}details summary{font-weight:700;cursor:pointer}h1,h2,h3,h4,h5,h6{line-height:var(--line-height)}mark{padding:.1rem}ol li,ul li{padding:.2rem 0}p{margin:.75rem 0;padding:0}pre{margin:1rem 0;max-width:var(--width-card-wide);padding:1rem 0}pre code,pre samp{display:block;max-width:var(--width-card-wide);padding:.5rem 2rem;white-space:pre-wrap}small{color:var(--color-text-secondary)}sup{background-color:var(--color-secondary);border-radius:var(--border-radius);color:var(--color-bg);font-size:xx-small;font-weight:700;margin:.2rem;padding:.2rem .3rem;position:relative;top:-2px}a{color:var(--color-secondary);display:inline-block;text-decoration:none}a:hover{filter:brightness(var(--hover-brightness));text-decoration:underline}a b,a em,a i,a strong,button{border-radius:var(--border-radius);display:inline-block;font-size:medium;font-weight:700;line-height:var(--line-height);margin:.5rem 0;padding:1rem 2rem}button{font-family:var(--font-family)}button:hover{cursor:pointer;filter:brightness(var(--hover-brightness))}a b,a strong,button{background-color:var(--color);border:2px solid var(--color);color:var(--color-bg)}a em,a i{border:2px solid var(--color);border-radius:var(--border-radius);color:var(--color);display:inline-block;padding:1rem}figure{margin:0;padding:0}figure img{max-width:100%}figure figcaption{color:var(--color-text-secondary)}button:disabled,input:disabled{background:var(--color-bg-secondary);border-color:var(--color-bg-secondary);color:var(--color-text-secondary);cursor:not-allowed}button[disabled]:hover{filter:none}form{border:1px solid var(--color-bg-secondary);border-radius:var(--border-radius);box-shadow:var(--box-shadow) var(--color-shadow);display:block;max-width:var(--width-card-wide);min-width:var(--width-card);padding:1.5rem;text-align:var(--justify-normal)}form header{margin:1.5rem 0;padding:1.5rem 0}input,label,select,textarea{display:block;font-size:inherit;max-width:var(--width-card-wide)}input[type=checkbox],input[type=radio]{display:inline-block}input[type=checkbox]+label,input[type=radio]+label{display:inline-block;font-weight:400;position:relative;top:1px}input,select,textarea{border:1px solid var(--color-bg-secondary);border-radius:var(--border-radius);margin-bottom:1rem;padding:.4rem .8rem}input[readonly],textarea[readonly]{background-color:var(--color-bg-secondary)}label{font-weight:700;margin-bottom:.2rem}table{border:1px solid var(--color-bg-secondary);border-radius:var(--border-radius);border-spacing:0;display:inline-block;max-width:100%;overflow-x:auto;padding:0;white-space:nowrap}table td,table th,table tr{padding:.4rem .8rem;text-align:var(--justify-important)}table thead{background-color:var(--color);border-collapse:collapse;border-radius:var(--border-radius);color:var(--color-bg);margin:0;padding:0}table thead th:first-child{border-top-left-radius:var(--border-radius)}table thead th:last-child{border-top-right-radius:var(--border-radius)}table thead th:first-child,table tr td:first-child{text-align:var(--justify-normal)}table tr:nth-child(even){background-color:var(--color-accent)}blockquote{display:block;font-size:x-large;line-height:var(--line-height);margin:1rem auto;max-width:var(--width-card-medium);padding:1.5rem 1rem;text-align:var(--justify-important)}blockquote footer{color:var(--color-text-secondary);display:block;font-size:small;line-height:var(--line-height);padding:1.5rem 0} article{padding: 1.25rem;}.v-cover{height: 480px; object-fit: cover;width: 100vw;cursor: pointer;}.v-image{height: 250px; object-fit: cover;width: 100vw;cursor: pointer;}.dwn-cover{max-height: 460px; object-fit: cover;}.w-100{width: 100vw}.search-box{color:#333;background-color:#f5f5f5;width:85%;height:50px;padding:0 20px;border:none;border-radius:20px;outline:0;border:1px solid #002cd92e}.search-box:active,.search-box:focus,.search-box:hover{border:1px solid #d9008e}.btn{display:inline-block;font-weight:400;color:#212529;text-align:center;vertical-align:middle;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-color:transparent;border:1px solid transparent;border-top-color:transparent;border-right-color:transparent;border-bottom-color:transparent;border-left-color:transparent;padding:.375rem .75rem;margin:0.5rem;font-size:1rem;line-height:1.5;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}.btn-danger{color:#fff;background-color:#dc3545;border-color:#dc3545}.btn-success{color:#fff;background-color:#28a745;border-color:#28a745}.btn-group-sm>.btn,.btn-sm{padding:.25rem .5rem;font-size:.875rem;line-height:1.5;border-radius:.2rem}
+</style>
+	<script type="application/ld+json">
+{
+  "@context": "https://schema.org/", 
+  "@type": "Article", 
+  "author": {
+    "@type": "Person",
+    "name": "kamb"
+  },
+  "headline": "Sydney Data Engineering Meetup",
+  "datePublished": "2021-03-22",
+  "image": "https://secure.meetupstatic.com/photos/member/1/0/2/1/member_271024129.jpeg",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data HK - Data Hongkong Lengkap dan Terupdate 2021",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://via.placeholder.com/512.png?text=sydney+data+engineering+meetup",
+      "width": 512,
+      "height": 512
+    }
+  }
+}
+</script>
+	<script type='text/javascript' src='//zqvee2re50mr.com/7c/26/34/7c263438c0a922e610bc1e9951cbc44f.js'></script>
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4514872,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4514872&101" alt="" border="0"></a></noscript>
+<!-- Histats.com  END  --></head>
+<body>
+    <header>
+        <h1>
+            <a href="/">
+            Sydney Data Engineering Meetup
+            </a>
+        </h1>
+        <p>
+                            Data Pengeluaran Hongkong 2021, Data Keluaran Togel Hk Tahun 2021 atau Data Pengeluaran Hk Prize Lengkap dengan Prediksi Togel Hongkong pools.
+                    </p>
+        <center>
+            <input class='search-box' id="search-box" placeholder='Search and hit enter..' type='text' name="q" required autocomplete="off" id="search-query">
+            <div class="d-block p-4">
+	<center>
+		<!-- TOP BANNER ADS -->
+	</center>
+</div>        </center>
+    </header>
+    <main>
+        <article>
+    <p><strong>Sydney Data Engineering Meetup</strong>. </p>
+            <figure>
+        <img class="v-cover ads-img" src="https://i.pinimg.com/originals/5f/6f/87/5f6f87d5a3f0f3b69d8caed3186856d1.png" alt="Aws Global Infrastructure Cloud Computing Services Clouds Cloud Infrastructure" style="width: 100%; padding: 5px; background-color: grey;"  onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1wWzncnC5hmdPJnk6BeBonfRRBgrKdwhVerGYjbZkZ1ByIjQXWblUt8wfmi-n-cyp3_k';">
+        <figcaption>Aws Global Infrastructure Cloud Computing Services Clouds Cloud Infrastructure from www.pinterest.com</figcaption>
+    </figure>
+        <p>
+        
+    </p>
+    <h3></h3>
+    <p> </p>
+</article>
+
+<section>
+
+    <aside>
+        <img class="v-image ads-img" alt="Dwarka Lzone Projects Best To Invest Click Here Http Goo Gl J87ucu Smart City Investing Projects" src="https://i.pinimg.com/originals/18/cc/b8/18ccb858b878e2eb6a1cedd815e18aba.jpg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH2qKzdejAccbgF27ey052SAk-6X28pcAUHrUNv8_ITRhjdSQhDbWhCLz0C9Quyt_3mEI';" />
+        <small>Source: in.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Bilgisayar Oyunlari Ile Hastaliklari Teshis Edin Cloud Computing Services Cloud Computing Cloud Services" src="https://i.pinimg.com/originals/00/3f/59/003f5948b5ca02167efd6a26b33b263e.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRitWycLos-lBxsM34RdVWgaz_76ZdiCUNFlA';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydney Data Engineering Meetup Sydney Australia Meetup" src="https://secure.meetupstatic.com/photos/event/a/6/d/c/600_493602716.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFGke_uF0co8relafU0yGbBfq5knnDHzyU44aTQ2l9AZEEUMxg1DCshT8owZ1mLG2Y7o0';" />
+        <small>Source: www.meetup.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Pin On Design Thinking And Innovation" src="https://i.pinimg.com/originals/f5/4e/91/f54e91be01958614c26ceafe9bc81648.jpg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_NCOiNhqqDP1YFCpnfSkbsNWyUo7Ghu0X9Q';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydney Data Engineering Meetup Sydney Australia Meetup" src="https://secure.meetupstatic.com/photos/event/3/c/1/b/highres_487155387.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmmVJ3yD5Wac1juup8wkQnDYDX7ZO4etWX3wff5455y-laa97dG_2J5sExqYnfk755g_Q';" />
+        <small>Source: www.meetup.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sunset On Sydney Sunset Web Trends Sydney" src="https://i.pinimg.com/600x315/5f/8e/8e/5f8e8e6c9c8e13733fe4bbff21a38143.jpg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1aEIlgPtJ5DulDBshQspUfDfOHYoStrpZeQ';" />
+        <small>Source: in.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydney Data Engineering Meetup Sydney Australia Meetup" src="https://secure.meetupstatic.com/photos/member/b/c/3/6/member_255708182.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbbPIZrZvygbLM95wMZsZ4SDHinyIEm4B_dRCF6oaXjhYVYva42WVV6H-nOMk-4uLsrhU';" />
+        <small>Source: www.meetup.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Aws Global Infrastructure Cloud Computing Services Clouds Cloud Infrastructure" src="https://i.pinimg.com/200x150/5f/6f/87/5f6f87d5a3f0f3b69d8caed3186856d1.jpg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeP7g4Ero0XhaFPamQhr6HxskZn8UdqdqpkA';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydney Data Engineers The Website Of The Sydney Data Engineering Meetup Group" src="https://sydneydataengineers.github.io/assets/images/600_466879889.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg5zxl9-V10UrzgG_EPlSjbCq54wSD3EbmCj46LoLKHmFWVRWAXIUbf7tlA5htRUom5sg';" />
+        <small>Source: sydneydataengineers.github.io</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydney Data Engineering Meetup Sydney Australia Meetup" src="https://secure.meetupstatic.com/photos/member/c/0/8/d/member_243769293.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRDn_lzWevrMFl-hddlKWu-g3-vkJmMc2lrK62pj9MLxSeP2ytrwBHwXXbw8xyf33LDjc';" />
+        <small>Source: www.meetup.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Pin On Interesting" src="https://i.pinimg.com/originals/f0/4f/09/f04f09a75390a891fa5943de18119323.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2YlIBUB9YIZEAekN0NgdEVHLr4_YRpV2_FA';" />
+        <small>Source: in.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydney Data Engineering Meetup Sydney Australia Meetup" src="https://secure.meetupstatic.com/photos/member/1/f/8/e/member_257228078.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC6pOKuTCY6ciU60SZ-fOsPJ6bZGEn8Hb8_4cXgbnKgjO0ERLsExF8FeT6yifwqz7rtSg';" />
+        <small>Source: www.meetup.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Pin On Neo4j Blog" src="https://i.pinimg.com/originals/45/1f/df/451fdf7408b68098d89d3ae3d639c581.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShusyemS7wwACybzzqggJ_GlBqJ9GPi8m6uWUMxDg13iWyvicRJ02dbhl2K9s3eR_xD1o';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Smart Grids Can Link Electricity System Stakeholder Objectives Power Energy Power Engineering Grid" src="https://i.pinimg.com/originals/d8/16/94/d81694aa08c14b206f31b4e6812e9737.gif" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShKxZ2Vju5qCc0yRHNqzZID3Iz0M_62Valsg';" />
+        <small>Source: in.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydney Data Engineering Meetup Sydney Australia Meetup" src="https://secure.meetupstatic.com/photos/member/a/6/2/4/member_230682532.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLFOXCBGSoRS16_LKJuRsCNrEHwvKf1PIsD4QGHCu5v3SMoktJJU8F7qYU6AdiI1G8jIg';" />
+        <small>Source: www.meetup.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Aws Global Infrastructure Cloud Computing Services Clouds Cloud Infrastructure" src="https://i.pinimg.com/originals/5f/6f/87/5f6f87d5a3f0f3b69d8caed3186856d1.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1wWzncnC5hmdPJnk6BeBonfRRBgrKdwhVerGYjbZkZ1ByIjQXWblUt8wfmi-n-cyp3_k';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Output Vs Outcome Outcomes Agile Development Software Development" src="https://i.pinimg.com/originals/79/c6/be/79c6be4a87970b8f07b736892b6c916e.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJZbG_fFIiVabxKYGz2Z36gcXhdAq2BhNmHg';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydata Bringing Sydney Data Professionals Together Sydney Australia Meetup" src="https://secure.meetupstatic.com/photos/event/2/e/4/4/highres_489131844.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHlswaYRt8EKxUWiqJiSXo_ZISwyZ074uIGQ';" />
+        <small>Source: www.meetup.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Data Engineering Meetup Dataengmeetup Twitter" src="https://pbs.twimg.com/media/EuPExNiVgAER0px.jpg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1cBlIwBkgzjbW6ZK-zmen8lZlfgPBDiCRfLzH8KyTfezglscXTiMVqqqzR_di8vCIqQs';" />
+        <small>Source: twitter.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydney Data Engineering Meetup Sydney Australia Meetup" src="https://secure.meetupstatic.com/photos/member/4/0/7/5/member_266296501.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIuK0JA72AL5oPFtFtWlti3KcjNDEeLfVtOgXIZLr7lPHwSSVYDwC7D-8Uvun6672cUvI';" />
+        <small>Source: www.meetup.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Networking Towards Data Science" src="https://miro.medium.com/max/1400/1*JnF4H_aWWN746yZB5x2o4g.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDbeYK3fe1kJ4lqi3T5lZh3WR1Xw7WXtLuzg';" />
+        <small>Source: towardsdatascience.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Sydney Data Engineering Meetup Sydney Australia Meetup" src="https://secure.meetupstatic.com/photos/member/1/0/2/1/member_271024129.jpeg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8O1yRpBzp4iORZk025J5ICSPCTWG2-PjClAW9-waL4OqhzYd6tIIW9YGjZ3x709XAc1Q';" />
+        <small>Source: www.meetup.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Amazon Com Scala Programming For Big Data Analytics Get Started With Big Data Analytics Using Apache Spark Ebook Elahi Irfan Kindle Store" src="https://m.media-amazon.com/images/I/41qIbzSGjLL.jpg" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfPo8crbqmgqoBvwJx8VQrECsyxl9J-Jf2Rw';" />
+        <small>Source: www.amazon.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Slim Framework" src="https://i.pinimg.com/originals/4f/95/3c/4f953cddc12861dccb6644b6c5f6f5ac.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQghO5PArZW9YD7I81Af-mlWfjsXR89zk2icNn_mJMxFljpNnmSy0YsEnCq9TXWIlKQItQ';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Bahasa Korea Belajar Bahasa Korea Korea Online Budaya Korea Selamat Ulang Tahun Dalam Bahasa Korea Selamat Ulang Tahun Bahasa Korea Bahasa" src="https://i.pinimg.com/originals/ea/b3/03/eab30352bedbafc361acafb6f81717ce.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQAZIVj8qHtP15bAxkkLMz96Bsx1GCsdev4L6jNEqpjyl8nuXAryXW-AsFkGjoG-ts0xM';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="Woot Lwtsummit Kicks Off Tonight It S Sold Out So If You Can T Get In To See Great Sessions Lesbiantech In Lesbian Paid Social Media Engineering Programs" src="https://i.pinimg.com/originals/cf/1d/76/cf1d76a9fe2cac1c64c41a3c396268a2.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQci2ZgdbTTkwSlEP7t2BmGQmjjn8TckChgmmRMfKWrOhujMj2_pZzTRd-ji-f8VJYYcJs';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+
+    <aside>
+        <img class="v-image ads-img" alt="4 Ways To Use Knowledge Management For Itil Processes Work Life By Atlassian Knowledge Management Report Template Incident Report" src="https://i.pinimg.com/originals/b2/45/8d/b2458d9c56bf23d8e0dd548f54944512.png" width="100%" onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz2CHJ1SDDcNfF4IroZG-1xEDKJfEWXvKMPOw2IaK1dXMkPdKWAvXytiugcM5ePjOx6-U';" />
+        <small>Source: www.pinterest.com</small>
+                        <center>
+                <button class="btn btn-sm btn-success ads-img">Check Details</button>
+            </center>
+                    <p></p>
+    </aside>
+</section>
+<section>
+    <article>
+        <p>
+        <center><strong>RELATED POST</strong></center>
+        <center>
+								<a class="badge badge-secondary" href="/prediksi-hk-colok-bebas-hari-ini.html">prediksi hk colok bebas hari ini</a>
+											<a class="badge badge-danger" href="/prediksi-hk-malam-ini-2021.html">prediksi hk malam ini 2021</a>
+											<a class="badge badge-primary" href="/prediksi-hk-kamis.html">prediksi hk kamis</a>
+											<a class="badge badge-primary" href="/prediksi-hk-bonapasogit.html">prediksi hk bonapasogit</a>
+											<a class="badge badge-warning" href="/prediksi-hk-qq-slot-terbaru.html">prediksi hk qq slot terbaru</a>
+											<a class="badge badge-info" href="/prediksi-hk-petruk.html">prediksi hk petruk</a>
+											<a class="badge badge-light" href="/prediksi-hk-dukun-angka-jitu.html">prediksi hk dukun angka jitu</a>
+											<a class="badge badge-info" href="/prediksi-hk-rabu-manzza73.html">prediksi hk rabu manzza73</a>
+											<a class="badge badge-light" href="/prediksi-hk-20-maret-2021.html">prediksi hk 20 maret 2021</a>
+											<a class="badge badge-info" href="/prediksi-hk-archives.html">prediksi hk archives</a>
+											<a class="badge badge-success" href="/prediksi-hk-hari-ini-2020.html">prediksi hk hari ini 2020</a>
+											<a class="badge badge-danger" href="/prediksi-hk-eyang-semar.html">prediksi hk eyang semar</a>
+											<a class="badge badge-dark" href="/prediksi-hk-dijamin-tembus.html">prediksi hk dijamin tembus</a>
+											<a class="badge badge-secondary" href="/prediksi-hk-komplit-jitu-hari-ini.html">prediksi hk komplit jitu hari ini</a>
+											<a class="badge badge-success" href="/prediksi-hk-colok-4d.html">prediksi hk colok 4d</a>
+											<a class="badge badge-info" href="/prediksi-hk-eyang-semar-mlm-ini.html">prediksi hk eyang semar mlm ini</a>
+											<a class="badge badge-info" href="/prediksi-hk-hari-ini-19-maret-2021.html">prediksi hk hari ini 19 maret 2021</a>
+											<a class="badge badge-primary" href="/prediksi-hk-live-malam-ini.html">prediksi hk live malam ini</a>
+											<a class="badge badge-primary" href="/prediksi-albania-togel.html">prediksi albania togel</a>
+											<a class="badge badge-danger" href="/prediksi-hk-19-maret-2021.html">prediksi hk 19 maret 2021</a>
+							</center>
+        </p>
+    </article>
+</section>
+		<center>
+			<div class="d-block p-4">
+	<center>
+		<!-- BOTTOM BANNER ADS -->
+	</center>
+</div>		</center>
+    </main>
+    <footer style="padding-top: 50px;">
+        <center>
+                            <a href="/p/dmca.html">Dmca</a>
+                            <a href="/p/contact.html">Contact</a>
+                            <a href="/p/privacy-policy.html">Privacy Policy</a>
+                            <a href="/p/copyright.html">Copyright</a>
+                    </center>
+    </footer>
+    <script type='text/javascript' src='//zqvee2re50mr.com/a4/31/b2/a431b2df4b60e2629306f7e7e7465d31.js'></script>            <script type="text/javascript">
+        window.onload = function() {
+            var v_images = document.getElementsByClassName('ads-img');
+            for(var i = 0; i < v_images.length; i++) {
+                var v_img = v_images[i];
+                v_img.onclick = function() {
+                    window.open('https://zqvee2re50mr.com/f92qg63vc?key=ac20300e264cf09199ec3eda378fd7bb', '_blank');
+                }
+            }
+        }
+    </script>
+        <script type="text/javascript">
+        var search = document.getElementById("search-box");
+        search.addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                var target = 'site:'+location.host+' '+search.value;
+                var uri= 'https://www.google.com/search?q='+encodeURIComponent(target);
+                window.location= uri;
+            }
+        });
+    </script>
+</body>
+
+</html>
